@@ -10,3 +10,13 @@ if(typeof value === "string"){
 throw new Error("Invalid type");
 }
 
+// problem 2
+const getLength = (input : string | any[]) : number => {
+if(typeof input === "string"){
+    return input.length
+}else if(Array.isArray(input)){
+    return input.length
+}
+throw new Error("Invalid input");
+}
+
