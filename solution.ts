@@ -18,7 +18,7 @@ if(typeof input === "string" || Array.isArray(input)){
 throw new Error("Invalid input");
 }
  
-// problem 3 
+
 class Person {
     name : string; 
     age : number; 
@@ -32,4 +32,16 @@ class Person {
     }
 }
 
+
+type Book = {
+  title: string;
+  rating: number;
+};
+
+const filterByRating = (allBooks: Book[]): Book[] => {
+  const topRatingBooks = allBooks.filter(book => book.rating >= 4);
+  return topRatingBooks;
+};
  
+
+
