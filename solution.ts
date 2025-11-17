@@ -10,13 +10,26 @@ if(typeof value === "string"){
 throw new Error("Invalid type");
 }
 
-// problem 2
+ 
 const getLength = (input : string | any[]) : number => {
-if(typeof input === "string"){
+if(typeof input === "string" || Array.isArray(input)){
     return input.length
-}else if(Array.isArray(input)){
-    return input.length
-}
+} 
 throw new Error("Invalid input");
 }
+ 
+// problem 3 
+class Person {
+    name : string; 
+    age : number; 
 
+    constructor(name : string, age: number){
+        this.name = name
+        this.age = age
+    }
+    getDetails(): string {
+        return (`'Name: ${this.name}, Age: ${this.age}'`);
+    }
+}
+
+ 
