@@ -11,7 +11,7 @@ throw new Error("Invalid type");
 }
 
  
-const getLength = (input : string | any[]) : number => {
+const getLength = (input : string | unknown[]) : number => {
 if(typeof input === "string" || Array.isArray(input)){
     return input.length
 } 
@@ -112,3 +112,5 @@ const calculateTotalPrice = (allProduct: Product[]): number => {
     const total = prices.reduce((acc, price) => acc + price, 0);
     return total;
 }
+
+ 
