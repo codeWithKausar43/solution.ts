@@ -68,3 +68,33 @@ console.log(`Title: ${allBook.title}, Author: ${allBook.author}, Published: ${al
 
 
 
+// solution 7 
+function getUniqueValues<T extends number | string>(array1: T[], array2: T[]): T[] {
+  const result: T[] = [];
+
+  for (let i = 0; i < array1.length; i++) {
+    let isDuplicate = false;
+    for (let j = 0; j < result.length; j++) {
+      if (array1[i] === result[j]) {
+        isDuplicate = true;
+        break;
+      }
+    }
+    if (!isDuplicate) result.push(array1[i]);
+  }
+
+  for (let i = 0; i < array2.length; i++) {
+    let isDuplicate = false;
+    for (let j = 0; j < result.length; j++) {
+      if (array2[i] === result[j]) {
+        isDuplicate = true;
+        break;
+      }
+    }
+    if (!isDuplicate) result.push(array2[i]);
+  }
+
+  return result;
+}
+
+
