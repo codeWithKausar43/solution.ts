@@ -67,34 +67,48 @@ console.log(`Title: ${allBook.title}, Author: ${allBook.author}, Published: ${al
 }
 
 
+function getUniqueValues<T extends number | string>(firstArray: T[], secondArray: T[]): T[] {
+    const uniqueValues: T[] = [];
 
-// solution 7 
-function getUniqueValues<T extends number | string>(array1: T[], array2: T[]): T[] {
-  const result: T[] = [];
-
-  for (let i = 0; i < array1.length; i++) {
-    let isDuplicate = false;
-    for (let j = 0; j < result.length; j++) {
-      if (array1[i] === result[j]) {
-        isDuplicate = true;
-        break;
-      }
+    for (let i = 0; i < firstArray.length; i++) {
+        let alreadyAdded = false;
+        for (let j = 0; j < uniqueValues.length; j++) {
+            if (firstArray[i] === uniqueValues[j]) {
+                alreadyAdded = true;
+                break;
+            }
+        }
+        if (!alreadyAdded) uniqueValues.push(firstArray[i]);
     }
-    if (!isDuplicate) result.push(array1[i]);
-  }
 
-  for (let i = 0; i < array2.length; i++) {
-    let isDuplicate = false;
-    for (let j = 0; j < result.length; j++) {
-      if (array2[i] === result[j]) {
-        isDuplicate = true;
-        break;
-      }
+    for (let i = 0; i < secondArray.length; i++) {
+        let alreadyAdded = false;
+        for (let j = 0; j < uniqueValues.length; j++) {
+            if (secondArray[i] === uniqueValues[j]) {
+                alreadyAdded = true;
+                break;
+            }
+        }
+        if (!alreadyAdded) uniqueValues.push(secondArray[i]);
     }
-    if (!isDuplicate) result.push(array2[i]);
-  }
 
-  return result;
+    return uniqueValues;
 }
 
 
+type Product = {
+    name: string;
+    price: number;
+    quantity: number;
+    discount?: number;
+}
+
+const calculateTotalPrice = (allProduct: Product[]): number => {
+    if (allProduct.length === 0) return 0;
+    const prices = allProduct.map(product => {
+        const basePrice = product.price * product.quantity;
+        return product.discount ? basePrice * (1 - product.discount / 100) : basePrice;
+    });
+    const total = prices.reduce((acc, price) => acc + price, 0);
+    return total;
+}
