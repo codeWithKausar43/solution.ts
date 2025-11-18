@@ -33,11 +33,11 @@ class Person {
 }
 
 
-type Book = {
+type Books = {
   title: string;
   rating: number;
 };
-const filterByRating = (allBooks: Book[]): Book[] => {
+const filterByRating = (allBooks: Books[]): Books[] => {
   const topRatingBooks = allBooks.filter(book => book.rating >= 4);
   return topRatingBooks;
 };
@@ -54,4 +54,17 @@ const filterActiveUsers = (users : Users[]) : Users[] => {
 return users.filter(user => user.isActive === true)
 }
 
- 
+
+interface Book{
+title :  string; 
+author : string; 
+publishedYear : number; 
+isAvailable : boolean; 
+}
+
+const printBookDetails = (allBook : Book) : void => {
+console.log(`Title: ${allBook.title}, Author: ${allBook.author}, Published: ${allBook.publishedYear}, Available: ${allBook.isAvailable ? 'Yes' : 'No'}`); 
+}
+
+
+
