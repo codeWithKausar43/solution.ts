@@ -37,11 +37,21 @@ type Book = {
   title: string;
   rating: number;
 };
-
 const filterByRating = (allBooks: Book[]): Book[] => {
   const topRatingBooks = allBooks.filter(book => book.rating >= 4);
   return topRatingBooks;
 };
  
 
+type Users = {
+id : number; 
+name : string; 
+email : string; 
+isActive : boolean; 
+}
 
+const filterActiveUsers = (users : Users[]) : Users[] => {
+return users.filter(user => user.isActive === true)
+}
+
+ 
